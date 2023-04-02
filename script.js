@@ -1,4 +1,4 @@
-// lauren is a pro coder on jesus on my mom and my dad amazing spectacular amazeballs wow!
+// lauren is a pro coder on jesus on my mom and my dad amazing spectacular amazeballs wow! - enzo
 //* LEFT SIDE *//
 let days = ["S", "M", "T", "W", "T", "F", "S"];
 let mon = [
