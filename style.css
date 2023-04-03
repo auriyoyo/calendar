@@ -40,7 +40,7 @@ body {
   font-family: "Arial Rounded MT Bold";
   font-weight: bolder;
   font-size: 39px;
-  color: rgb(59, 59, 59);
+  color: rgb(87, 99, 120);
 }
 
 .title {
@@ -101,12 +101,12 @@ body {
   font-family: "Arial Rounded MT Bold";
   font-weight: bolder;
   font-size: 35px;
-  color: rgb(248, 246, 246);
+  color: rgb(255, 255, 255);
   padding-left: 10px;
 }
 
 .events-wrapper {
-  height: 68%;
+  height: 66%;
   background-color: rgb(87, 99, 120);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -140,7 +140,6 @@ body {
 }
 
 .event-month {
-  font-family: "Arial Rounded MT Bold";
   font-weight: normal;
   font-size: 15px;
   color: rgb(224, 230, 236);
