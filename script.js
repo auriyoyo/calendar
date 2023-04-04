@@ -104,6 +104,9 @@ let nums = [
 ];
 
 let eventsWrapper = document.querySelector(".events-wrapper");
+let modal = document.querySelector(".pop");
+let monthDate = document.querySelector(".month-date");
+let star = document.querySelector(".star");
 for (let i = 0; i < 12; i++) {
   let events = document.createElement("section");
   events.classList.add("event-section");
@@ -124,7 +127,26 @@ for (let i = 0; i < 12; i++) {
   eventMonth.classList.add("event-month");
   eventMonth.innerText = mon[i];
   eventHeader.appendChild(eventMonth);
-
   events.appendChild(eventHeader);
+
+  let addEventButton = document.createElement("p");
+  addEventButton.innerText = "+ add event...";
+  addEventButton.classList.add("event-button");
+  events.appendChild(addEventButton);
+  events.addEventListener("click", () => {
+    modal.style.visibility = "visible";
+    monthDate.innerText = nums[i] + "/";
+  });
+
   eventsWrapper.appendChild(events);
 }
+
+let starred = false;
+star.addEventListener("click", () => {
+  starred = !starred;
+  if (starred) {
+    star.src = "./star.png";
+  } else {
+    star.src = "./filledstar.png";
+  }
+});
