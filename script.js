@@ -141,7 +141,7 @@ for (let i = 0; i < 12; i++) {
   eventsWrapper.appendChild(events);
 }
 
-let starred = false;
+let starred = true;
 star.addEventListener("click", () => {
   starred = !starred;
   if (starred) {
