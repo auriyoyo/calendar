@@ -31,7 +31,7 @@ const nov = { numDays: 30, numSpaces: 3 };
 const dec = { numDays: 31, numSpaces: 5 };
 let year = [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec];
 
-// reference class from html and make variable
+// reference class from html and make a variable
 let monWrapper = document.querySelector(".months-wrapper");
 
 for (let i = 0; i < 12; i++) {
@@ -61,9 +61,9 @@ for (let i = 0; i < 12; i++) {
 let monthSections = document.querySelectorAll(".month-section");
 
 let j = 0;
-// for each section element
+// for each section element with .month-section tag
 monthSections.forEach((sec) => {
-  // make new div for each day, add to section
+  // make new div for each day, add to the section
   for (let i = 0; i < 7; i++) {
     let day = document.createElement("div");
     day.classList.add("day");
@@ -103,18 +103,22 @@ let nums = [
   "12",
 ];
 
+// references html to make variables
 let eventsWrapper = document.querySelector(".events-wrapper");
 let modal = document.querySelector(".pop");
 let monthDate = document.querySelector(".month-date");
 let star = document.querySelector(".star");
+
 for (let i = 0; i < 12; i++) {
+  // new section for each month
   let events = document.createElement("section");
   events.classList.add("event-section");
 
+  // holds the month number and month name
   let eventHeader = document.createElement("div");
   eventHeader.classList.add("event-header");
 
-  // big number
+  // big month number
   let numberBox = document.createElement("div");
   numberBox.classList.add("number-box");
   let number = document.createElement("p");
@@ -129,24 +133,56 @@ for (let i = 0; i < 12; i++) {
   eventHeader.appendChild(eventMonth);
   events.appendChild(eventHeader);
 
+  // pop up modal
   let addEventButton = document.createElement("p");
-  addEventButton.innerText = "+ add event...";
   addEventButton.classList.add("event-button");
+  addEventButton.innerText = "+ add event...";
   events.appendChild(addEventButton);
   events.addEventListener("click", () => {
     modal.style.visibility = "visible";
     monthDate.innerText = nums[i] + "/";
   });
 
+  // add every section to a wrapper
   eventsWrapper.appendChild(events);
 }
 
-let starred = true;
+// star tag toggle
+let starred = false;
 star.addEventListener("click", () => {
   starred = !starred;
-  if (starred) {
+  if (!starred) {
     star.src = "./star.png";
   } else {
     star.src = "./filledstar.png";
   }
 });
+
+let confirmButton = document.getElementById("confirm");
+confirmButton.addEventListener("click", () => {
+  let eventName = document.getElementById("event-name");
+  let eventDay = document.getElementById("event-day");
+
+  if (eventName.value.length < 1) {
+    alert("Please enter a valid name.");
+  }
+
+  if (eventDay.value.length < 1) {
+    alert("Please enter a valid date.");
+  }
+
+  // dont close after alert?
+
+  // add to calendar
+  //addToCalendar(eventName, eventDay, starred);
+});
+
+// 0 padding lead on single digit numbers for the event date
+function zeroPadding(input) {
+  if (!isNaN(input.value) && input.value.length < 2 && input.value != 0) {
+    input.value = "0" + input.value;
+  }
+  if (!isNaN(input.value) && input.value.length > 2) {
+    input.value = input.value.replace("0", "");
+  }
+}
