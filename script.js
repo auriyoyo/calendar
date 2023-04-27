@@ -213,7 +213,7 @@ function zeroPadding(input) {
 function addToCalendar(month, name, d, star) {
   let circleOutline = document.createElement("img");
   circleOutline.classList.add("circle-outline");
-  circleOutline.src = "./circle-outline.svg";
+  circleOutline.src = "./circle-outline.png";
   let starOutline = document.createElement("img");
   starOutline.classList.add("star-outline");
   starOutline.src = "./star-outline.png";
