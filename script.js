@@ -136,9 +136,9 @@ for (let i = 0; i < 12; i++) {
   // pop up modal
   let addEventButton = document.createElement("p");
   addEventButton.classList.add("event-button");
-  addEventButton.innerText = "+ add event...";
+  addEventButton.innerText = " + add event... ";
   events.appendChild(addEventButton);
-  events.addEventListener("click", () => {
+  addEventButton.addEventListener("click", () => {
     modal.style.visibility = "visible";
     monthDate.innerText = nums[i] + "/";
   });
@@ -162,19 +162,42 @@ let confirmButton = document.getElementById("confirm");
 confirmButton.addEventListener("click", () => {
   let eventName = document.getElementById("event-name");
   let eventDay = document.getElementById("event-day");
+  let month = monthDate.innerText.slice(0, 2);
 
-  if (eventName.value.length < 1) {
+  if (
+    eventName.value.length < 1 &&
+    (eventDay.value.length < 1 || isNaN(eventDay.value))
+  ) {
+    alert("Please enter a valid name and date.");
+  } else if (eventName.value.length < 1) {
     alert("Please enter a valid name.");
-  }
-
-  if (eventDay.value.length < 1) {
+  } else if (
+    eventDay.value.length < 1 ||
+    isNaN(eventDay.value) ||
+    eventDay.value < 0 ||
+    eventDay.value > year[Number(month) - 1].numDays
+  ) {
     alert("Please enter a valid date.");
+  } else {
+    // add to calendar
+    addToCalendar(
+      Number(month) - 1,
+      eventName.value,
+      Number(eventDay.value),
+      starred
+    );
+
+    document.getElementById("event-details").reset();
+    eventName.value = "";
+    starred = false;
+    star.src = "./star.png";
+    modal.style.visibility = "hidden";
   }
+});
 
-  // dont close after alert?
-
-  // add to calendar
-  //addToCalendar(eventName, eventDay, starred);
+let cancelButton = document.getElementById("cancel");
+cancelButton.addEventListener("click", () => {
+  modal.style.visibility = "hidden";
 });
 
 // 0 padding lead on single digit numbers for the event date
@@ -184,5 +207,25 @@ function zeroPadding(input) {
   }
   if (!isNaN(input.value) && input.value.length > 2) {
     input.value = input.value.replace("0", "");
+  }
+}
+
+function addToCalendar(month, name, d, star) {
+  let circleOutline = document.createElement("img");
+  circleOutline.classList.add("circle-outline");
+  circleOutline.src = "./circle-outline.svg";
+  let starOutline = document.createElement("img");
+  starOutline.classList.add("star-outline");
+  starOutline.src = "./star-outline.png";
+
+  let mon = monWrapper.children[month];
+  let datesList = [...mon.children].filter((element) => {
+    return element.classList.contains("dates");
+  });
+
+  if (!star) {
+    datesList[d - 1].appendChild(circleOutline.cloneNode(true));
+  } else if (star) {
+    datesList[d - 1].appendChild(starOutline.cloneNode(true));
   }
 }

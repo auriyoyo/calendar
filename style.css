@@ -239,7 +239,7 @@ input[type="number"] {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   display: inline;
-  font-size: 15px;
+  font-size: 17px;
   color: rgb(92, 92, 109);
 }
 
@@ -269,6 +269,7 @@ input[type="number"] {
 
 #cancel {
   font-size: 16px;
+  font-weight: 500;
   padding: 4px;
   border-style: solid;
   border-width: 3px;
@@ -289,4 +290,27 @@ input[type="number"] {
   grid-row: -1/-2;
   grid-column: -1/-2;
   place-self: center;
+}
+
+.circle-outline {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -2.5px;
+  left: -2px;
+}
+
+.star-outline {
+  width: 28px;
+  height: 25px;
+  position: absolute;
+  top: -6px;
+  left: -6px;
+}
+
+.dates {
+  position: relative;
+  width: 16px;
+  height: 15px;
+  text-align: center;
 }
