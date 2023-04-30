@@ -262,7 +262,7 @@ function addToCalendar(month, name, d, star) {
   });
 
   let markers = datesList[d - 1].children;
-  if (markers.length > 0 && month != thisMonth && d != thisDay) {
+  if (markers.length > 0 && d != thisDay) {
     alert("That day is already booked!");
   } else if (!star) {
     datesList[d - 1].appendChild(circleOutline.cloneNode(true));
