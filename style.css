@@ -118,6 +118,7 @@ body {
   grid-template-rows: min-content repeat(4, 1fr);
   padding-top: 5px;
   padding-left: 10px;
+  padding-right: 10px;
 }
 
 .event-section {
@@ -150,9 +151,16 @@ body {
   color: rgb(224, 230, 236);
 }
 
+.event-content {
+  overflow: scroll;
+  height: 100px;
+}
+
 .event-button {
   color: rgb(163, 173, 182);
   margin-left: 10px;
+  padding-top: 4px;
+
   height: min-content;
 }
 
@@ -162,6 +170,26 @@ body {
   background-color: rgba(207, 214, 220, 0.234);
   color: rgb(216, 216, 216);
   border-radius: 3px;
+}
+
+.to-do-item {
+  font-family: monospace;
+  color: rgb(224, 230, 236);
+  margin-left: 10px;
+  padding-top: 4px;
+  height: min-content;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.to-do-item:hover {
+  cursor: pointer;
+  text-decoration: line-through;
+}
+
+.item-date {
+  font-weight: bold;
+  font-family: monospace;
 }
 
 .pop {
@@ -290,6 +318,15 @@ input[type="number"] {
   grid-row: -1/-2;
   grid-column: -1/-2;
   place-self: center;
+}
+
+.today {
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  z-index: -1;
+  top: -4px;
+  left: -4px;
 }
 
 .circle-outline {
