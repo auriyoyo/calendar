@@ -1,4 +1,9 @@
-// lauren is a pro coder on jesus on my mom and my dad amazing spectacular amazeballs wow! - enzo
+/* ACKKNOWLEDGEMENTS
+ * snorlax media image: https://i.pinimg.com/originals/3b/f7/34/3bf7348ba96fa38e1e182e6e9d6dd5ef.jpg
+ * API documentation/open source code used for references:
+ * - References by Mozilla Contributors, licensed under CC-BY-SA 2.5. (mdn webdocs, https://developer.mozilla.org/en-US/docs/Web)
+ * - Joel Olawanle (2022) JavaScript Get Current Date – Today's Date in JS [Open Source code]. https://www.freecodecamp.org/news/javascript-get-current-date-todays-date-in-js/.
+ */
 
 //* LEFT SIDE *//
 let days = ["S", "M", "T", "W", "T", "F", "S"];
@@ -109,7 +114,6 @@ let currMonthDates = [...currMonth.children].filter((element) => {
 });
 
 currMonthDates[thisDay - 1].appendChild(todayMarker.cloneNode(true));
-//currMonthDates[thisDay - 1].style.color = "rgb(87, 99, 120)";
 
 //* RIGHT SIDE *//
 let nums = [
@@ -220,7 +224,7 @@ confirmButton.addEventListener("click", () => {
   ) {
     alert("Please enter a valid date.");
   } else {
-    // add to calendar
+    // add to calendar function
     addToCalendar(
       Number(month) - 1,
       eventName.value,
@@ -249,6 +253,7 @@ cancelButton.addEventListener("click", () => {
 });
 
 function addToCalendar(month, name, d, star) {
+  // create the images that will mark the calendar
   let circleOutline = document.createElement("img");
   circleOutline.classList.add("circle-outline");
   circleOutline.src = "./circle-outline.png";
@@ -256,14 +261,19 @@ function addToCalendar(month, name, d, star) {
   starOutline.classList.add("star-outline");
   starOutline.src = "./star-outline.png";
 
+  // create a list of all the children appending the monWrapper
+  // and filter out the empty divs in the beginning of each month
   let mon = monWrapper.children[month];
   let datesList = [...mon.children].filter((element) => {
     return element.classList.contains("dates");
   });
 
+  // check if there is already an event planned on this day.
+  // if there is none, mark the calendar and add it to the list!
   let markers = datesList[d - 1].children;
   if (markers.length > 0 && d != thisDay) {
     alert("That day is already booked!");
+    return;
   } else if (!star) {
     datesList[d - 1].appendChild(circleOutline.cloneNode(true));
     modal.style.visibility = "hidden";
@@ -271,12 +281,15 @@ function addToCalendar(month, name, d, star) {
     datesList[d - 1].appendChild(starOutline.cloneNode(true));
     modal.style.visibility = "hidden";
   }
+
   let toDoItem = document.createElement("div");
   toDoItem.classList.add("to-do-item");
 
   let itemDate = document.createElement("p");
   itemDate.classList.add("item-date");
   itemDate.innerText = "";
+
+  // 0 padding
   if (d < 10) {
     itemDate.innerText = "0";
   }
@@ -288,6 +301,7 @@ function addToCalendar(month, name, d, star) {
   toDoItem.appendChild(itemDate);
   toDoItem.appendChild(itemName);
 
+  // add event listener for strikethough the text if click on the event to cross it out
   let checkedOff = false;
   toDoItem.addEventListener("click", () => {
     checkedOff = !checkedOff;
@@ -298,6 +312,7 @@ function addToCalendar(month, name, d, star) {
     }
   });
 
+  // select the event-content div that matches the month input
   let contentBox = document.querySelector(
     `.event-section:nth-child(${month + 2}) .event-content`
   );
