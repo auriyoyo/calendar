@@ -24,17 +24,17 @@ let mon = [
 
 // month objects
 const jan = { numDays: 31, numSpaces: 0 };
-const feb = { numDays: 28, numSpaces: 3 };
-const mar = { numDays: 31, numSpaces: 3 };
-const apr = { numDays: 30, numSpaces: 6 };
-const may = { numDays: 31, numSpaces: 1 };
-const jun = { numDays: 30, numSpaces: 4 };
-const jul = { numDays: 31, numSpaces: 6 };
-const aug = { numDays: 31, numSpaces: 2 };
-const sep = { numDays: 30, numSpaces: 5 };
-const oct = { numDays: 31, numSpaces: 0 };
-const nov = { numDays: 30, numSpaces: 3 };
-const dec = { numDays: 31, numSpaces: 5 };
+const feb = { numDays: 29, numSpaces: 3 };
+const mar = { numDays: 31, numSpaces: 4 };
+const apr = { numDays: 30, numSpaces: 0 };
+const may = { numDays: 31, numSpaces: 2 };
+const jun = { numDays: 30, numSpaces: 5 };
+const jul = { numDays: 31, numSpaces: 0 };
+const aug = { numDays: 31, numSpaces: 3 };
+const sep = { numDays: 30, numSpaces: -1 };
+const oct = { numDays: 31, numSpaces: 1 };
+const nov = { numDays: 30, numSpaces: 4 };
+const dec = { numDays: 31, numSpaces: -1 };
 let year = [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec];
 
 // reference class from html and make a variable that holds all of the month sections
@@ -79,7 +79,7 @@ monthSections.forEach((sec) => {
     sec.appendChild(day);
   }
   // make an empty div at beginning of each month, add to section, reference list of month objects
-  for (let i = 1; i <= year[j].numSpaces; i++) {
+  for (let i = 0; i <= year[j].numSpaces; i++) {
     let empty = document.createElement("div");
     sec.appendChild(empty);
   }
