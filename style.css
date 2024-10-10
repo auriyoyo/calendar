@@ -157,6 +157,10 @@ body {
   height: 100px;
 }
 
+.event-content::-webkit-scrollbar {
+  display: none;
+}
+
 .event-button {
   color: rgb(163, 173, 182);
   margin-left: 10px;
