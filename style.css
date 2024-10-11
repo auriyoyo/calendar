@@ -28,7 +28,7 @@ body {
 }
 
 .month-section {
-  height: 175px;
+  height: 100%;
   width: min-content;
   padding-right: 20px;
   display: grid;
@@ -90,7 +90,7 @@ body {
 }
 
 .picture {
-  background-image: url("snorlax.jpg");
+  background-image: url("assets/snorlax.jpg");
   background-size: 750px;
   background-color: rgb(149, 163, 184);
 }
@@ -136,7 +136,7 @@ body {
   place-items: center;
   border-right-style: solid;
   border-right-width: 3px;
-  border-right-color: rgb(73, 80, 95);
+  border-right-color: #505b74;
 }
 
 .number-box p {

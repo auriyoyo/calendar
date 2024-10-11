@@ -96,7 +96,7 @@ monthSections.forEach((sec) => {
 // mark the current day
 let todayMarker = document.createElement("img");
 todayMarker.classList.add("today");
-todayMarker.src = "./current-day.png";
+todayMarker.src = "assets/current-day.png";
 
 let date = new Date();
 let currentDate = date.toLocaleDateString();
@@ -195,9 +195,9 @@ let starred = false;
 star.addEventListener("click", () => {
   starred = !starred;
   if (!starred) {
-    star.src = "./star.png";
+    star.src = "assets/star.png";
   } else {
-    star.src = "./filledstar.png";
+    star.src = "assets/filledstar.png";
   }
 });
 
@@ -236,7 +236,7 @@ confirmButton.addEventListener("click", () => {
     eventDay.value = "";
     eventName.value = "";
     starred = false;
-    star.src = "./star.png";
+    star.src = "assets/star.png";
   }
 });
 
@@ -248,7 +248,7 @@ cancelButton.addEventListener("click", () => {
   eventName.value = "";
   eventDay.value = "";
   starred = false;
-  star.src = "./star.png";
+  star.src = "assets/star.png";
   modal.style.visibility = "hidden";
 });
 
@@ -256,10 +256,10 @@ function addToCalendar(month, name, d, star) {
   // create the images that will mark the calendar
   let circleOutline = document.createElement("img");
   circleOutline.classList.add("circle-outline");
-  circleOutline.src = "./circle-outline.png";
+  circleOutline.src = "assets/circle-outline.png";
   let starOutline = document.createElement("img");
   starOutline.classList.add("star-outline");
-  starOutline.src = "./star-outline.png";
+  starOutline.src = "assets/star-outline.png";
 
   // create a list of all the children appending the monWrapper
   // and filter out the empty divs in the beginning of each month
